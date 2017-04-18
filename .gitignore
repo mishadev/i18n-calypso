@@ -41,3 +41,5 @@ node_modules
 
 # Optional unison directory
 .unison
+
+dist
