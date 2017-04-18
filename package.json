@@ -1,43 +1,50 @@
 {
-  "name": "i18n-calypso",
-  "version": "1.7.2",
-  "description": "i18n JavaScript library on top of Jed originally used in Calypso",
-  "main": "index.js",
+  "name": "i18n-dreamhost",
+  "version": "0.0.1",
+  "description": "i18n JavaScript library on top of Jed",
+  "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Automattic/i18n-calypso.git"
+    "url": "git+https://github.com/mishadev/i18n-dreamhost.git"
   },
-  "author": "@automattic",
   "license": "GPL-2.0",
   "bin": {
-    "i18n-calypso": "bin/index.js"
+    "i18n-dreamhost": "bin/index.js"
   },
+  "homepage": "https://github.com/mishadev/i18n-dreamhost#readme",
   "bugs": {
-    "url": "https://github.com/Automattic/i18n-calypso/issues"
+    "url": "https://github.com/mishadev/i18n-dreamhost/issues"
   },
   "scripts": {
-    "test": "mocha --recursive"
+    "build": "babel ./lib --out-dir ./dist",
+    "prepublish": "npm run build",
+    "test": "mocha -w ./test/index.js ./test/cli/index.js"
   },
-  "homepage": "https://github.com/Automattic/i18n-calypso#readme",
   "dependencies": {
     "async": "^1.5.2",
     "commander": "^2.9.0",
     "debug": "2.2.0",
     "glob": "^7.0.6",
-    "interpolate-components": "1.1.0",
     "jed": "1.0.2",
     "jstimezonedetect": "1.0.5",
     "lodash.assign": "^4.0.8",
     "lodash.flatten": "^4.4.0",
     "lru": "^3.1.0",
     "moment-timezone": "0.5.11",
-    "react": "0.14.8 || ^15.1.0",
     "xgettext-js": "1.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.0.0",
+    "babel-core": "^6.0.0",
+    "babel-plugin-transform-runtime": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "babel-register": "^6.0.0",
+
     "chai": "^3.5.0",
     "enzyme": "2.2.0",
     "mocha": "^2.4.5",
+    "react": "0.14.8 || ^15.1.0",
     "react-addons-test-utils": "0.14.8 || ^15.1.0",
     "react-dom": "0.14.8 || ^15.1.0",
     "react-test-env": "0.1.1",

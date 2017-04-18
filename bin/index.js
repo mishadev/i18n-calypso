@@ -12,7 +12,7 @@ var flatten = require( 'lodash.flatten' ),
 /**
  * Internal dependencies/
  */
-var i18nCalypso = require( '../cli' );
+var i18nCLI = require( '../cli' );
 
 /**
  * Internal variables/
@@ -40,7 +40,7 @@ program
 	.usage( '-o outputFile -i inputFile -f format [inputFile ...]' )
 	.on( '--help', function() {
 		console.log( '  Examples' );
-		console.log( '\n    $ i18n-calypso -o ./outputFile.pot -i ./inputFile.js -i ./inputFile2.js' );
+		console.log( '\n    $ i18n-dreamhsot -o ./outputFile.pot -i ./inputFile.js -i ./inputFile2.js' );
 		console.log( '' );
 	} )
 	.parse( process.argv );
@@ -54,7 +54,7 @@ extras = Array.isArray( program.extra ) ? program.extra : ( program.extra ? [ pr
 inputFiles = ( program.inputFile.length ) ? program.inputFile : program.args;
 
 if ( inputFiles.length === 0 ) {
-	throw new Error( 'Error: You must enter the input file. Run `i18n-calypso -h` for examples.' );
+	throw new Error( 'Error: You must enter the input file. Run `i18n-dreamhost -h` for examples.' );
 }
 
 if ( outputFile ) {
@@ -74,7 +74,7 @@ inputPaths.forEach( function( inputFile ) {
 	}
 } );
 
-var result = i18nCalypso( {
+var result = i18nCLI( {
 	keywords: keywords,
 	output: outputFile,
 	phpArrayName: arrayName,

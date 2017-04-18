@@ -1,4 +1,4 @@
-I18n Calypso
+I18n Dreamhost
 ============
 
 This lib enables translations, exposing three public methods:
@@ -98,41 +98,6 @@ i18n.translate( 'My %s has 3 corners', {
     args: 'hat'
 } );
 // 'My hat has 3 corners'
-```
-
-### Mixing Strings And Markup
-
-Because React tracks DOM nodes in the virtual DOM for rendering purposes, you cannot use string substitution with html markup as you might in a php scenario, because we don't render arbitrary html into the page, we are creating a virtual DOM in React.
-
-Instead we use the [interpolate-components module](https://github.com/Automattic/interpolate-components) to inject components into the string using a component token as a placeholder in the string and a components object, similar to how string substitution works. The result of the `translate()` method can then be inserted as a child into another React component. Component tokens are strings (containing letters, numbers, or underscores only) wrapped inside double-curly braces and have an opening, closing, and self-closing syntax, similar to html.
-
-**NOTE: Always use a JSX element for passing components. Otherwise you will need to [wrap your React classes with `createFactory`](http://facebook.github.io/react/blog/2014/10/14/introducing-react-elements.html). Any wrapped content inside opening/closing component tokens will be inserted/replaced as the children of that component in the output. Component tokens must be unique:**
-
-```js
-// self-closing component syntax
-var example = i18n.translate( 'My hat has {{hatInput/}} corners', {
-        components: {
-            hatInput: <input name="hatInput" type="text" />
-        }
-    } );
-
-// component that wraps part of the string
-var example2 = i18n.translate( 'I feel {{em}}very{{/em}} strongly about this.', {
-        components: {
-            em: <em />
-        }
-    } );
-
-// components can nest
-var example3 = i18n.translate( '{{a}}{{icon/}}click {{em}}here{{/em}}{{/a}} to see examples.', {
-        components: {
-            a: <a href="#" />,
-            em: <em />,
-            icon: <Icon size="huge" />
-        }
-    } );
-
-
 ```
 
 ### Pluralization
@@ -248,7 +213,7 @@ i18n.numberFormat( 2500.33, { decimals: 3, thousandsSep: '*', decPoint: '@'} ); 
 ### Usage
 
 ```js
-import { mixin as i18nMixin } from 'i18n-calypso';
+import { mixin as i18nMixin } from 'i18n-dreamhost';
 
 const MyComponent = React.createClass( {
     mixins: [ i18nMixin ],
@@ -263,7 +228,7 @@ const MyComponent = React.createClass( {
 Or inject it in all your components using:
 
 ```js
-import { mixin as i18nMixin } from 'i18n-calypso';
+import { mixin as i18nMixin } from 'i18n-dreamhost';
 import ReactInjection from 'react/lib/ReactInjection';
 
 ReactInjection.Class.injectMixin( i18nMixin );
@@ -276,10 +241,10 @@ ReactInjection.Class.injectMixin( i18nMixin );
 returns a new component class. The new component wraps the original component, passing all
 original props plus props to assist in localization (`translate`, `moment`, and `numberFormat`).
 The advantage of using a higher-order component instead of calling translate directly from
-the `i18n-calypso` module is that the latter does not properly account for change events
+the `i18n-dreamhost` module is that the latter does not properly account for change events
 which may be emitted by the state emitter object.
 
-It should act as a substitute to the existing i18n-calypso-mixin which provides the `this.translate`,
+It should act as a substitute to the existing mixin which provides the `this.translate`,
 `this.moment`, and `this.numberFormat` functions. Notably, the higher-order component can be
 used for components which do not support mixins, including those inheriting the `Component` class
 or stateless function components.
@@ -291,7 +256,7 @@ Typically, you'd wrap your exported function with `localize`:
 ```jsx
 // greeting.jsx
 import React from 'react';
-import { localize } from 'i18n-calypso';
+import { localize } from 'i18n-dreamhost';
 
 function Greeting( { translate, className } ) {
 	return (

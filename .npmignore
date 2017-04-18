@@ -1,0 +1,6 @@
+/lib
+/node_modules
+/react
+/npm-debug.log
+/.git*
+/index.js
