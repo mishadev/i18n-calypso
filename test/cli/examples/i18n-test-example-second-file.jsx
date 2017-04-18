@@ -2,8 +2,8 @@
 // This file itself doesn't need to actually work. :-)
 /* global i18n:false */
 function test() {
-	// simplest case... just a translation, no special options
-	i18n.translate( 'My test has two files.' );
+    // simplest case... just a translation, no special options
+    i18n.translate( 'My test has two files.' );
 }
 
 module.exports = test;
